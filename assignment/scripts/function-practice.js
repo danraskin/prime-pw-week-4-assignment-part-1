@@ -142,7 +142,22 @@ console.log(`By the year ${year}, the sum of pages in Gene Wolfe's 'Book of the 
 //     numbers contained in an input array. If there are no positive numbers
 //     return an empty array. Note: The input array should not change.
 
+function badBrainsHasThatAttitude(mentalAttitude) {
+  let positiveMentalAttitude = [];
+  for (x of mentalAttitude) {
+    if (x > 0) {
+      positiveMentalAttitude.push(x);
+    }
+  }
+  return positiveMentalAttitude;
 
+}
+
+badVibes = [-3,-4,-28,0,-2];
+fineVibes = [-3,0,2,3,1,-12,18];
+
+console.log(`Your vibes are kinda bad.`, badBrainsHasThatAttitude(badVibes));
+console.log(`Your vibes are allright, but we can make 'em better! Let's listen to Bad Brains.`, badBrainsHasThatAttitude(fineVibes));
 
 // 11. Pick a problem from Edabit(https://edabit.com/) or 
 //     CodeWars(https://www.codewars.com/). Then describe it 

@@ -30,41 +30,6 @@ helloName('Auk');
 
 // 3. Function to add two numbers together & return the result
 
-//lines 35-65: I started playing around with this problem and it spiraled, transforming it into a series of nested functions. Sorry!
-//Line 68 has the simple answer.
-
-const nightsideTheLongSun = 333, //series of numbers, written to sum in functions
-    lakeOfTheLongSun = 352,    
-    caldeOfTheLongSun = 370,
-    exodusFromTheLongSun = 430; 
-
-let year = 1993; //this is user-input parameter!
-
-function lengthOfSeries(year){ //function returns numerical array: pages in each book of series as a function of year/when books were published
-  if (year === 1993) {
-    bookOfTheLongSun = [nightsideTheLongSun];
-  } else if (year >= 1994 && year < 1996) {
-      bookOfTheLongSun = [nightsideTheLongSun,lakeOfTheLongSun,caldeOfTheLongSun];
-  } else if (year >=1996) {
-      bookOfTheLongSun = [nightsideTheLongSun,lakeOfTheLongSun,caldeOfTheLongSun,exodusFromTheLongSun];
-    } else {
-      bookOfTheLongSun = [];
-    }
-  return bookOfTheLongSun;
-  }
-
-function addPages(bookOfTheLongSun) { //this is the function that sums the array. it is a repeat of my solution to problem 8 in week 3 assignment 3. had to declare an extra variable in order to return output of for loop.
-  let pagesTotal;
-  for (let i = 0, pages = 0 ;i<bookOfTheLongSun.length;i++){
-    pages += bookOfTheLongSun[i];
-    pagesTotal = pages;
-  }
-  return pagesTotal;
-}
-
-console.log(`By the year ${year}, the sum of pages in Gene Wolfe's 'Book of the Long Sun' tetrology (orignal TOR paperback editions) is: `,
-   addPages(lengthOfSeries(year)));
-
 function addNumbers(num1, num2) {
   sum = num1 + num2;
   return console.log(`The sum of ${num1} and ${num2} is: ${sum}`);
@@ -118,7 +83,7 @@ function find( value, array ){
     if (x === value) {
       return true;
     }
-    return false;
+      return false;
   }
 }
 libStack = ['Neveryon, Samuel R. Delany','Book of the New Sun, Gene Wolfe','Viriconium, John M. Harrison','Mars Trilogy, Kim Stanley Robinson'];
@@ -129,17 +94,49 @@ console.log(`The library has a pretty tight stack of sci-fi right now: `,libStac
 // 8. Function to check if a letter is the first letter in a 
 //    string. Return true if it is, and false otherwise
 function isFirstLetter(letter, string) {
-
+  if (string.charAt(0) === letter) {
+    return true;
+  }
+    return false;
 }
 console.log( 'isFirstLetter - should say true', isFirstLetter('a', 'apple') );
 console.log( 'isFirstLetter - should say false', isFirstLetter('z', 'apple') );
 
 // 9. Function to return the sum of all numbers in an array
-function sumAll( ) {
-  let sum = 0
-  // TODO: loop to add items
-  return sum;
+
+//got carried away with this one; was curious about nesting functions. answer is Line 129.
+
+const nightsideTheLongSun = 333, //series of numbers, written to sum in functions
+    lakeOfTheLongSun = 352,    
+    caldeOfTheLongSun = 370,
+    exodusFromTheLongSun = 430; 
+
+let year = 1993; //this is user-input parameter!
+
+function lengthOfSeries(year){ //function returns numerical array: pages in each book of series as a function of year/when books were published
+  if (year === 1993) {
+    bookOfTheLongSun = [nightsideTheLongSun];
+  } else if (year >= 1994 && year < 1996) {
+      bookOfTheLongSun = [nightsideTheLongSun,lakeOfTheLongSun,caldeOfTheLongSun];
+  } else if (year >=1996) {
+      bookOfTheLongSun = [nightsideTheLongSun,lakeOfTheLongSun,caldeOfTheLongSun,exodusFromTheLongSun];
+    } else {
+      bookOfTheLongSun = [];
+    }
+  return bookOfTheLongSun;
+  }
+
+function addPages(bookOfTheLongSun) { //this is the function that sums the array. it is a repeat of my solution to problem 8 in week 3 assignment 3. had to declare an extra variable in order to return output of for loop.
+  let pagesTotal;
+  for (let i = 0, pages = 0 ;i<bookOfTheLongSun.length;i++){
+    pages += bookOfTheLongSun[i];
+    pagesTotal = pages;
+  }
+  return pagesTotal;
 }
+
+console.log(`By the year ${year}, the sum of pages in Gene Wolfe's 'Book of the Long Sun' tetrology (orignal TOR paperback editions) is: `,
+   addPages(lengthOfSeries(year)));
 
 // 10. Function to return a new array of all positive (greater than zero)
 //     numbers contained in an input array. If there are no positive numbers

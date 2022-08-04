@@ -14,10 +14,10 @@ console.log('Test - should say "Hello World!"', hello());
 // 2. Function to return an personalized hello, using the `name` argument.
 //    for example 'Hello, Jo!', or 'Hello, Stacy!'
 function helloName(characterName) {
-return console.log(`'${characterName}' is such a lame character name, I bet it's from a really stupid fantasy book!`);
+  return `'${characterName}' is such a lame character name, I bet it's from a really stupid fantasy book!`;
 }
 // Remember to call the function to test
-helloName('Auk');
+console.log(helloName('Auk'));
 //I changed the variable 'name' to 'characterName' because i was having a weird
 //issue understanding the scope of the function; when testing, i was able to call the name function in the console,
 //as a blank string, even when I deleted it from my code. writing different variable names makes more sense; when called in console, they remain undefined.
@@ -32,21 +32,20 @@ helloName('Auk');
 
 function addNumbers(num1, num2) {
   sum = num1 + num2;
-  return console.log(`The sum of ${num1} and ${num2} is: ${sum}`);
+  return `The sum of ${num1} and ${num2} is: ${sum}`;
   //if i didn't care about logging the sum, the content of function could simply be:
   //return num1 + num2;
 
 }
-addNumbers(8,5);
-
+console.log(addNumbers(8,5));
 
 // 4. Function to multiply three numbers & return the result
 function multiplyThree(num1, num2, num3){
   product = num1 * num2 * num3;
-  return console.log(`The product of ${num1}, ${num2}, ${num3} is: ${product}`);
+  return `The product of ${num1}, ${num2}, ${num3} is: ${product}`;
 }
-multiplyThree(-.3,9,102);
 
+console.log(multiplyThree(1,2,3));
 
 // 5. Function that will return true if a number is positive, 
 //    or greater than zero, and false otherwise
@@ -74,7 +73,6 @@ function getLast( array ) {
 console.log( `getLast - should return 4 when array is [1,2,3,4]:`, getLast([1,2,3,4]));
 console.log( `getLast - should return 'undefined' when array is empty:`, getLast([]));
 
-
 // 7. Function to find a value in an array. Return true if the 
 //    value is found and false otherwise. Use a loop;
 //    DO NOT use Array.includes, Array.indexOf, or Array.find 
@@ -82,25 +80,31 @@ function find( value, array ){
   for (x of array) {
     if (x === value) {
       return true;
-    }
-      return false;
-  }
+    }  
+  } return false; //wow, forgot to test for a positive case, but cohort-mates mentioned this in the slack and i was able to correct this mistake.
 }
-libStack = ['Neveryon, Samuel R. Delany','Book of the New Sun, Gene Wolfe','Viriconium, John M. Harrison','Mars Trilogy, Kim Stanley Robinson'];
+
+libStack = ['Neveryon, Samuel R. Delany','Book of the New Sun, Gene Wolfe','Viriconium, John M. Harrison','Mars Trilogy, Kim Stanley Robinson,','And Chaos Died, Joanna Russ'];
 console.log(`The library has a pretty tight stack of sci-fi right now: `,libStack,`, but I'm sick of all these male authors! I've heard good things about Doris Lessing's 'Canopus in Argos', but it's way out of print. Am I in luck?`, find('Canopus in Argos, Doris Lessing', libStack));
+console.log('What about any Joanna Russ?', find('And Chaos Died, Joanna Russ', libStack));
+
 // ----------------------
 // Stretch Goals
 // ----------------------
 // 8. Function to check if a letter is the first letter in a 
 //    string. Return true if it is, and false otherwise
 function isFirstLetter(letter, string) {
+  letter = letter.toLowerCase();
+  string = string.toLowerCase();
   if (string.charAt(0) === letter) {
     return true;
   }
     return false;
 }
-console.log( 'isFirstLetter - should say true', isFirstLetter('a', 'apple') );
-console.log( 'isFirstLetter - should say false', isFirstLetter('z', 'apple') );
+console.log( 'isFirstLetter - a to apple - should say true', isFirstLetter('a', 'apple') );
+console.log( 'isFirstLetter - A to apple - should say true', isFirstLetter('A', 'apple') );
+console.log( 'isFirstLetter - a to Apple - should say true', isFirstLetter('a', 'Apple') );
+console.log( 'isFirstLetter - z to apple - should say false', isFirstLetter('z', 'apple') );
 
 // 9. Function to return the sum of all numbers in an array
 
@@ -150,7 +154,6 @@ function badBrainsHasThatAttitude(mentalAttitude) {
     }
   }
   return positiveMentalAttitude;
-
 }
 
 badVibes = [-3,-4,-28,0,-2];
@@ -162,3 +165,43 @@ console.log(`Your vibes are allright, but we can make 'em better! Let's listen t
 // 11. Pick a problem from Edabit(https://edabit.com/) or 
 //     CodeWars(https://www.codewars.com/). Then describe it 
 //     here in a comment, write the function, and test it!
+
+// Edabit problem h4ck3r sp34k
+// Create a function that takes a string as an argument and returns a coded (h4ck3r 5p34k) version of the string.
+
+//method one: 172-189. converts string to array; deals with character case differences
+function n3wsp34k(string) {
+  let stringLC = string.toLowerCase(); //most efficient way to deal with cOmplex casEs?
+  string = string.split("");
+  for (let i=0; i < string.length; i++) {
+    if (stringLC.charAt(i) === 'a') {
+      string.splice(i,1,'4');
+    } else if (stringLC.charAt(i) === 'e') {
+      string.splice(i,1,'3');
+    } else if (stringLC.charAt(i) === 'i') {
+      string.splice(i,1,'1');
+    } else if (stringLC.charAt(i) === 'o') {
+      string.splice(i,1,'0');
+    } else if (stringLC.charAt(i) === 's') {
+      string.splice(i,1,'5');
+    }
+  } return string.join('');
+}
+
+console.log(n3wsp34k('All your base are belong to us!'));
+
+//method two: 193-206. simpler code, all case instances need to be specified
+function n3wsp34k2(string) {
+  string = string.replace(/a/g,'4');
+  string = string.replace(/A/g,'4');
+  string = string.replace(/e/g,'3');
+  string = string.replace(/E/g,'3');
+  string = string.replace(/i/g,'1');
+  string = string.replace(/I/g,'1');
+  string = string.replace(/o/g,'0');
+  string = string.replace(/O/g,'0');
+  string = string.replace(/s/g,'5');
+  string = string.replace(/S/g,'5');
+  return string;
+}
+console.log(n3wsp34k2('Stop all thems DOWNLOADING'));
